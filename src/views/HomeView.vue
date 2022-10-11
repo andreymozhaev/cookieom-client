@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <nav>
-      <div class="logo">
+      <router-link class="logo" to="/">
         <img src="@/assets/logo.svg" alt="logo" />
         <p>cookiom</p>
-      </div>
+      </router-link>
       <div class="menu">
         <a href="#"> О нас</a>
         <a href="#"> Платформа</a>
@@ -19,7 +19,7 @@
         <h2>Начните создавать<br />тесты прямо сейчас!</h2>
         <p>Быстрый и лёгкий контруктор для<br />создания тестов и опросов</p>
         <div class="buttons">
-          <button>Зарегистрироваться</button>
+          <router-link to="/register">Зарегистрироваться</router-link>
         </div>
       </div>
       <div class="dragon">
@@ -34,8 +34,6 @@
 
 <style scoped>
 .home {
-  min-height: 100vh;
-  background: linear-gradient(111.2deg, #ecf4f9 29.68%, #c2dbf0 79.95%);
   display: flex;
   flex-direction: column;
 }
@@ -104,13 +102,14 @@ main {
 
 .decor h2 {
   font-weight: 700;
-  font-size: 3.5rem;
+  font-size: 3rem;
   line-height: 69px;
   text-align: center;
   color: #4d4d4d;
 }
 
-.decor button {
+.decor a {
+  display: block;
   background: #4589b0;
   border-radius: 20px;
   padding: 24px 34px;
@@ -118,13 +117,9 @@ main {
   font-weight: 700;
   font-size: 1.5rem;
   color: #ffffff;
-  cursor: pointer;
+  text-decoration: none;
 }
 
-.decor button:active,
-.decor button:focus {
-  outline: none;
-}
 .dragon {
   /*flex: 1;*/
   /*object-fit: contain;
