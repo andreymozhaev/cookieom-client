@@ -6,6 +6,22 @@
         <p>cookiom</p>
       </router-link>
     </nav>
+    <main>
+      <div class="form">
+        <form action="">
+          <h3>Создайте свой профиль</h3>
+          <input type="text" placeholder="Имя" />
+          <input type="email" placeholder="email" />
+          <input type="password" placeholder="Пароль" />
+          <button>Регистрация</button>
+        </form>
+      </div>
+      <div class="content">
+        <h2>Добро пожаловать на<br />Cookieom !</h2>
+        <p>Большие возможности для создания тестов и опросов</p>
+        <img src="@/assets/dragon_register.svg" alt="dragon" />
+      </div>
+    </main>
   </div>
 </template>
 
@@ -43,5 +59,91 @@ nav a {
   font-weight: 500;
   font-size: 1.5rem;
   text-decoration: none;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 104px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  background: #c0d6e9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 27px;
+  margin-top: 80px;
+  padding: 60px;
+}
+
+h3 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2em;
+  line-height: 34px;
+  text-align: center;
+  color: rgba(68, 68, 68, 0.9);
+  margin: 0;
+}
+
+h2,
+p {
+  margin: 0;
+}
+
+h2 {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 63px;
+  text-align: center;
+  color: #444444;
+  margin-bottom: 25px;
+}
+
+input {
+  width: 525px;
+  height: 73px;
+  background: rgba(255, 255, 247, 0.84);
+  border-radius: 20px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  padding: 20px;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 29px;
+  color: rgba(68, 68, 68, 0.6);
+}
+
+button {
+  width: 525px;
+  height: 73px;
+  background: #4589b0;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 20px;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5em;
+  line-height: 34px;
+  text-align: center;
+  color: rgba(255, 255, 247, 0.9);
+  cursor: pointer;
 }
 </style>
