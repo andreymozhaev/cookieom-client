@@ -8,11 +8,15 @@
     </nav>
     <main>
       <div class="form">
-        <form action="">
+        <form action="" @submit.prevent="signup">
           <h3>Создайте свой профиль</h3>
-          <input type="text" placeholder="Имя" />
-          <input type="email" placeholder="email" />
-          <input type="password" placeholder="Пароль" />
+          <input type="text" placeholder="Логин" v-model="login" />
+          <input type="password" placeholder="Пароль" v-model="password" />
+          <input
+            type="password"
+            placeholder="Подтверждение пароля"
+            v-model="confirm"
+          />
           <button>Регистрация</button>
         </form>
       </div>
@@ -25,7 +29,47 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+const login = ref();
+const password = ref();
+const confirm = ref();
+
+function validate() {
+  return true;
+}
+
+async function signup() {
+  if (validate()) {
+    let user = {
+      login: login.value,
+      password: password.value,
+    };
+    console.log(JSON.stringify(user));
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    //let host = "https://api.koohat.ru/signup";
+    let response = await fetch(process.env.VUE_APP_API_URL + "signup", {
+      method: "post",
+      headers: headers,
+      body: JSON.stringify(user),
+    });
+    let result = await response.json();
+    switch (response.status) {
+      case 403: {
+        this.message = result.message;
+        this.isValid = false;
+        break;
+      }
+      case 201: {
+        let token = result.token;
+        console.log(token);
+        break;
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 .register {
@@ -145,5 +189,9 @@ button {
   text-align: center;
   color: rgba(255, 255, 247, 0.9);
   cursor: pointer;
+}
+
+.content img {
+  width: 70%;
 }
 </style>
