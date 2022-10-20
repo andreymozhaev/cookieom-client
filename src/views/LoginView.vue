@@ -8,22 +8,17 @@
     </nav>
     <main>
       <div class="form">
-        <form action="" @submit.prevent="signup">
-          <h3>Создайте свой профиль</h3>
+        <form action="" @submit.prevent="signin()">
+          <h3>Войдите в свой профиль</h3>
           <input type="text" placeholder="Логин" v-model="login" />
           <input type="password" placeholder="Пароль" v-model="password" />
-          <input
-            type="password"
-            placeholder="Подтверждение пароля"
-            v-model="confirm"
-          />
-          <button>Регистрация</button>
+          <button>Войти</button>
         </form>
       </div>
       <div class="content">
-        <h2>Добро пожаловать на<br />Cookieom !</h2>
-        <p>Большие возможности для создания тестов и опросов</p>
-        <img src="@/assets/dragon_register.svg" alt="dragon" />
+        <h2>Создай новое на<br />Cookieom !</h2>
+        <p>Начни создавать тесты</p>
+        <img src="@/assets/dragon_login.svg" alt="dragon" />
       </div>
     </main>
   </div>
@@ -31,44 +26,13 @@
 
 <script setup>
 import { ref } from "vue";
+import { useAuthStore } from "@/store/auth";
 const login = ref();
 const password = ref();
-const confirm = ref();
 
-function validate() {
-  return true;
-}
-
-async function signup() {
-  if (validate()) {
-    let user = {
-      login: login.value,
-      password: password.value,
-    };
-    console.log(JSON.stringify(user));
-    let headers = new Headers();
-    headers.append("Content-Type", "application/json");
-    //let host = "https://api.koohat.ru/signup";
-    let response = await fetch(process.env.VUE_APP_API_URL + "signup", {
-      method: "post",
-      headers: headers,
-      body: JSON.stringify(user),
-    });
-    let result = await response.json();
-    switch (response.status) {
-      case 403: {
-        //this.message = result.message;
-        //this.isValid = false;
-        console.log("Ошибка");
-        break;
-      }
-      case 201: {
-        let token = result.token;
-        console.log(token);
-        break;
-      }
-    }
-  }
+async function signin() {
+  const authStore = useAuthStore();
+  authStore.login(login.value, password.value);
 }
 </script>
 

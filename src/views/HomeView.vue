@@ -3,13 +3,13 @@
     <nav>
       <router-link class="logo" to="/">
         <img src="@/assets/logo.svg" alt="logo" />
-        <p>cookiom</p>
+        <p>cookieom</p>
       </router-link>
       <div class="menu">
         <a href="#"> О нас</a>
         <a href="#"> Платформа</a>
         <a href="#"> Инструкции</a>
-        <router-link to="#"
+        <router-link to="/login"
           ><img src="@/assets/enter.png" alt="login"
         /></router-link>
       </div>
@@ -46,6 +46,7 @@ nav {
   max-width: 1400px;
   width: 100%;
   margin: auto;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -73,12 +74,13 @@ nav a {
 }
 
 main {
+  box-sizing: border-box;
   flex: 1;
   display: flex;
   margin-top: 100px;
   height: 500px;
   justify-content: space-between;
-  padding-right: 100px;
+  padding: 0 100px 0 30px;
 }
 
 .decor {
@@ -124,7 +126,6 @@ main {
   /*flex: 1;*/
   /*object-fit: contain;
   object-position: center;*/
-  height: 500px;
   align-self: center;
 }
 
